@@ -11,4 +11,7 @@ if($conn0 = oci_connect('agricola','0000d121c554', $dbstr)):
  else:
    print "ERRO NA CONEXAO";
  endif;
+
 ?>
+<!-- teste ti -->
+
