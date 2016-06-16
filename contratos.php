@@ -15,17 +15,17 @@
           <!-- Menu) -->
           <?php include 'menu.php';?>
           <?php include 'connect.php';?>
+          
+          
           <?php
           $stid0 = oci_parse($conn0,"select distinct DESCRICAO_PRODUTO AS P from GM_CTR_2017");
           oci_execute($stid0);
-
           ?>
 
           <?php
           $stid1 = oci_parse($conn0,"select distinct descricao_safra as SAFRA from safras order by 1");
           oci_execute($stid1);
-
-          ?>
+                  ?>
 
           <div class="section">
             <div class="container-fluid">
@@ -69,8 +69,8 @@
             <div class="col-md-4">
              <div class="panel panel-primary">
               <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-area-chart" aria-hidden="true"></i>
-                  Comparativo de valor por saca inverso</h3>
+              <!--<div class="dolar.php">-->
+                <h3 class="panel-title"><i class="fa fa-area-chart" aria-hidden="true"></i> Comparativo de valor por saca inverso</h3>
                 </div>
                 <div class="panel-body">
                   <div class="table-responsive">
@@ -80,11 +80,13 @@
                           <th class="success text-center">QUANTIDADE</th>
                           <th class="success text-center">VALOR</th>
                           <th class="success text-center">MÉDIA(SC)</th>
+                          
                         </tr>
                       </thead>
                       <tbody class="text-center">
                         <tr>
                           <td></td>
+          
                           <td></td>
                           <td></td>
                         </tr>
@@ -108,12 +110,12 @@
             </div>
 
             <!--ptax -->
-            <div class="col-md-4">
+            <?php include "dolar.php";?>
+            <div class="col-md-6">
+            
             </div>
 
             <?php
-
-            //   print "CONECTADO EM 192.168.4.3";
 
             //Consulta ao BANCO DE DADOS
 
@@ -122,8 +124,7 @@
             $stid = oci_parse($conn0, "select NR_CONTRATO, NOME_CLIENTE, DATA_CONTRATO, DESCRICAO_PRODUTO, SIGLA_MOEDA, round(QUANTIDADE/60) AS SACAS, VALOR_TOTAL, round(VALOR_UNITARIO,2) as UNITARIO from GM_CTR_2017 where DESCRICAO_PRODUTO = '$VPRODUTO'");
 
             oci_execute($stid);
-
-            //while ($row = oci_fetch_row($stid)) {
+           //while ($row = oci_fetch_row($stid)) {
              # code...
             // echo $row[DES_EMPRESA]."<br>";
             //}
@@ -173,7 +174,9 @@
                               echo "<td>".oci_result($stid, '')."</td>";
                               echo "</tr>";
                             }
-                            echo "<tr><td><td><td><td>".$totalsacas."</td></tr>";
+                            echo "<tr><td><td><td><td><td>".$totalsacas."</td></tr>";
+                          
+                            
 
                             oci_free_statement($stid);
                             oci_close($conn);
