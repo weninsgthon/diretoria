@@ -7,7 +7,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- As meta tags acima devem vir em primeiro lugar dentro do "head" qualquer
         outro conteúdo deve vir após essas tags -->
-        <title>Document</title>
+        <title>Ptax diário</title>
         <!-- Conteúdo CSS do Bootstrap -->
         <?php include 'css.php';?>
     </head>
